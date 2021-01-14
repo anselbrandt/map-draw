@@ -6,6 +6,11 @@ import {
   DrawLineStringMode,
   DrawPolygonMode,
 } from "react-map-gl-draw";
+import mapboxgl from "mapbox-gl";
+
+// @ts-ignore
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 const MAP_STYLE = "mapbox://styles/mapbox/light-v10";
 const MAPBOX_ACCESS_TOKEN = process.env.MAPBOX_ACCESS_TOKEN;
