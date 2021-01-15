@@ -7,6 +7,7 @@ import {
   DrawPolygonMode,
 } from "react-map-gl-draw";
 import mapboxgl from "mapbox-gl";
+import { Toolbar } from "./Toolbar";
 
 // @ts-ignore
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -44,23 +45,6 @@ function App() {
     setModeHandler(handler);
   };
 
-  const Toolbar = () => {
-    return (
-      <div
-        style={{ position: "absolute", top: 0, right: 0, maxWidth: "320px" }}
-      >
-        <select onChange={handleSwitchMode}>
-          <option value="">--Please choose a draw mode--</option>
-          {MODES.map((mode) => (
-            <option key={mode.id} value={mode.id}>
-              {mode.text}
-            </option>
-          ))}
-        </select>
-      </div>
-    );
-  };
-
   return (
     <MapGL
       viewState={viewState}
@@ -76,7 +60,7 @@ function App() {
         mode={modeHandler}
         onSelect={() => {}}
       />
-      <Toolbar />
+      <Toolbar handleSwitchMode={handleSwitchMode} MODES={MODES} />
     </MapGL>
   );
 }
