@@ -59,6 +59,10 @@ export const Toolbar: React.FC<Props> = ({
               color: `${selected} ?  '#ffffff' : 'inherit'`,
               background: `${selected} ? '#0071bc' : ${hovered} ? '#e6e6e6' : 'inherit'`,
             }}
+            id={m.id}
+            onMouseOver={handleHover}
+            onMouseOut={() => setHoveredId(null)}
+            onClick={handleSwitchMode}
           >
             <img
               style={{
@@ -67,7 +71,6 @@ export const Toolbar: React.FC<Props> = ({
               }}
               id={m.id}
               onMouseOver={handleHover}
-              onMouseOut={() => setHoveredId(null)}
               src={m.icon}
             />
             {hoveredId === m.id && (
