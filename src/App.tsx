@@ -34,6 +34,9 @@ function App() {
   const [viewState, setViewState] = useState(INITIAL_VIEWSTATE);
   const handleUpdateViewState = (viewState: any) => setViewState(viewState);
 
+  const [selected, setSelected] = useState(null);
+  const [isHovered, setIsHovered] = useState(false);
+
   const [modeId, setModeId] = useState<any>(null);
   const [modeHandler, setModeHandler] = useState<any>(null);
 
@@ -60,7 +63,11 @@ function App() {
         mode={modeHandler}
         onSelect={() => {}}
       />
-      <Toolbar handleSwitchMode={handleSwitchMode} MODES={MODES} />
+      <Toolbar
+        handleSwitchMode={handleSwitchMode}
+        selected={selected}
+        hovered={isHovered}
+      />
     </MapGL>
   );
 }
